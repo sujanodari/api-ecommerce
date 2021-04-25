@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
+        "jest": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "globals": {
+        "process": true,
+        "__dirname": true
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "no-unused-vars": "off"
+    }
+}
