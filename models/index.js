@@ -1,7 +1,7 @@
 const User = require('./user');
-const Order = require('./order');
+const UserToken = require('./userToken');
 
 module.exports = {
   User,
-  Order,
+  UserToken,
 };

@@ -1,5 +1,7 @@
 const get = require('lodash/get');
+const { accessTokenSecret } = require('../config');
 const Models = require('../models');
+const tokenService = require('../services/tokenServices')();
 
 module.exports = {
   formatError: (err) => {
@@ -17,6 +19,20 @@ module.exports = {
   },
 
   setContext: ({ req, res }) => {
-    return { req, res, Models };
+    let user;
+    try {
+      const bearerToken = req.headers?.authorization || '';
+      const [, token] = bearerToken.split(' ');
+
+      const tokenData = {
+        token,
+        tokenSecret: accessTokenSecret,
+      };
+
+      user = tokenService.verifyToken(tokenData);
+    } catch (err) {
+      user = null;
+    }
+    return { req, res, Models, user };
   },
 };
