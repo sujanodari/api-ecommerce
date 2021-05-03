@@ -3,22 +3,25 @@ const mongoose = require('mongoose');
 const config = require('../config');
 
 const userSchema = new mongoose.Schema({
-  userId: {
-    type: Number,
-    unique: true,
-    required: true,
-    index: true,
-  },
   name: {
     type: String,
     required: true,
   },
-});
-
-userSchema.add({
-  noOfOrders: {
-    type: Number,
-    default: 0,
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+  },
+  role: {
+    type: String,
+    required: true,
+  },
+  disable: {
+    type: Boolean,
+    default: false,
   },
 });
 
